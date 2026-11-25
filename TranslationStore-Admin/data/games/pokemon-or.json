@@ -1,0 +1,75 @@
+{
+  "id": "pokemon-or",
+  "name": "Pokémon Omega Ruby",
+  "platform": "3ds",
+  "title_ids": [
+    {
+      "region": "USA",
+      "id": "000400000011C400"
+    }
+  ],
+  "translations": [
+    {
+      "id": "pokemon-or-ptbr",
+      "name": "Pokémon Ômega Rubi",
+      "language": "pt-BR",
+      "version": "1.1",
+      "release_date": "2024-05-31",
+      "authors": [
+        {
+          "name": "Elite dos Quatro",
+          "role": "Tradução"
+        }
+      ],
+      "description": "Tradução do jogo Pokemon Omega Ruby para português",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "USA"
+        ],
+        "game_versions": [
+          "1.4"
+        ],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": "O jogo deve estar com a atualização 1.4 instalada para a tradução funcionar corretamente."
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/pokemon-or.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/pokemon-or.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/pokemon-or.zip",
+            "output": "sdmc:/luma/titles/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/pokemon-or.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/000400000011C400/"
+          }
+        ]
+      }
+    }
+  ],
+  "publisher": "Nintendo",
+  "release_year": 2014,
+  "genres": [
+    "RPG"
+  ]
+}

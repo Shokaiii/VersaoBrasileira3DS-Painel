@@ -1,0 +1,76 @@
+{
+  "id": "digimon-wre-dd",
+  "name": "Digimon World Re:Digitize Decode",
+  "platform": "3ds",
+  "title_ids": [
+    {
+      "region": "JPN",
+      "id": "00040000000AFC00"
+    }
+  ],
+  "translations": [
+    {
+      "id": "digimon-wre-dd-ptbr",
+      "name": "Digimon World Re:Digitize Decode",
+      "language": "pt-BR",
+      "version": "1.1",
+      "release_date": "2026-06-14",
+      "authors": [
+        {
+          "name": "Digi-Translators",
+          "role": "Tradução"
+        }
+      ],
+      "description": "",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "JPN"
+        ],
+        "game_versions": [
+          "1.1"
+        ],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": ""
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/digimon-wre-dd.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/digimon-wre-dd.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/digimon-wre-dd.zip",
+            "output": "sdmc:/luma/titles/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/digimon-wre-dd.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/00040000000AFC00/"
+          }
+        ]
+      }
+    }
+  ],
+  "publisher": "Bandai Namco",
+  "release_year": 2013,
+  "description": "RPG de criação e aventura no qual o jogador assume o papel de Taiga, um jovem transportado para o Mundo Digital. Ao lado de seu parceiro Digimon, é necessário treiná-lo, cuidar de suas necessidades, acompanhar sua evolução e explorar diversas áreas enquanto recruta novos habitantes para restaurar a Cidade Inicial e desvenda os mistérios que ameaçam o Mundo Digital.",
+  "genres": [
+    "RPG"
+  ]
+}

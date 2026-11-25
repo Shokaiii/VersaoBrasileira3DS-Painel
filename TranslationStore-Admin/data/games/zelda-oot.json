@@ -1,0 +1,75 @@
+{
+  "id": "zelda-oot",
+  "name": "The Legend of Zelda: Ocarina of Time 3D",
+  "platform": "3ds",
+  "title_ids": [
+    {
+      "region": "USA",
+      "id": "0004000000033500"
+    }
+  ],
+  "translations": [
+    {
+      "id": "zelda-oot-ptbr",
+      "name": "A Lenda de Zelda: Ocarina do Tempo 3D",
+      "language": "pt-BR",
+      "version": "1.2",
+      "release_date": "2024-06-02",
+      "authors": [
+        {
+          "name": "Heroes of Time",
+          "role": "Tradução"
+        }
+      ],
+      "description": "Tradução do jogo The Legend of Zelda: Ocarina of Time 3D para português",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "USA"
+        ],
+        "game_versions": [
+          "0.1.0"
+        ],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds"
+        ],
+        "notes": ""
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/zelda-oot.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/zelda-oot.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/zelda-oot.zip",
+            "output": "sdmc:/luma/titles/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/zelda-oot.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/0004000000033500/"
+          }
+        ]
+      }
+    }
+  ],
+  "publisher": "Nintendo",
+  "release_year": 2011,
+  "genres": [
+    "Ação",
+    "Aventura"
+  ]
+}

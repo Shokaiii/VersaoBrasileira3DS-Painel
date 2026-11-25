@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Jogo do catálogo Versão Brasileira",
+  "type": "object",
+  "required": ["id", "name", "platform", "translations"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 64},
+    "name": {"type": "string", "minLength": 1},
+    "platform": {"enum": ["3ds", "nds", "dsiware", "gba", "virtual-console"]},
+    "description": {"type": "string"},
+    "publisher": {"type": "string"},
+    "release_year": {"type": ["integer", "null"], "minimum": 1980, "maximum": 2100},
+    "genres": {"type": "array", "items": {"type": "string"}},
+    "title_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["region", "id"],
+        "properties": {
+          "region": {"enum": ["USA", "EUR", "JPN", "KOR", "CHN", "TWN", "ALL"]},
+          "id": {"type": "string", "pattern": "^[0-9A-F]{16}$"}
+        }
+      }
+    },
+    "translations": {"type": "array", "items": {"$ref": "#/$defs/translation"}}
+  },
+  "$defs": {
+    "translation": {
+      "type": "object",
+      "required": ["id", "name", "version", "install"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 64},
+        "name": {"type": "string", "minLength": 1},
+        "language": {"type": "string"},
+        "version": {"type": "string", "pattern": "^\\d+(\\.\\d+){0,2}$"},
+        "release_date": {"type": "string", "pattern": "^(\\d{4}-\\d{2}-\\d{2})?$"},
+        "authors": {
+          "type": "array",
+          "items": {"type": "object", "required": ["name"],
+                    "properties": {"name": {"type": "string", "minLength": 1}, "role": {"type": "string"}}}
+        },
+        "description": {"type": "string"},
+        "changelog": {
+          "type": "array",
+          "items": {"type": "object", "properties": {"version": {"type": "string"}, "notes": {"type": "string"}}}
+        },
+        "compatibility": {
+          "type": "object",
+          "properties": {
+            "regions": {"type": "array", "items": {"enum": ["USA", "EUR", "JPN", "KOR", "CHN", "TWN", "ALL"]}},
+            "game_versions": {"type": "array", "items": {"type": "string"}},
+            "consoles": {"enum": ["all", "new3ds"]},
+            "requirements": {"type": "array", "items": {"type": "string"}},
+            "notes": {"type": "string"}
+          }
+        },
+        "download_size": {"type": ["integer", "null"], "minimum": 0},
+        "install_size": {"type": ["integer", "null"], "minimum": 0},
+        "install": {"$ref": "#/$defs/pipeline"},
+        "uninstall": {"$ref": "#/$defs/pipeline"}
+      }
+    },
+    "pipeline": {
+      "type": "object",
+      "properties": {"steps": {"type": "array", "items": {"$ref": "#/$defs/step"}}}
+    },
+    "step": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {"enum": ["downloadFile", "extractFile", "copyFile", "deleteFile", "installCia", "uninstallCia"]},
+        "label": {"type": "string"},
+        "optional": {"type": "boolean"},
+        "file": {"type": "string"},
+        "output": {"type": "string"},
+        "source": {"type": "string"},
+        "destination": {"type": "string"},
+        "input": {"type": "string"},
+        "sha256": {"type": "string", "pattern": "^([0-9a-fA-F]{64})?$"},
+        "title_id": {"type": "string", "pattern": "^[0-9A-Fa-f]{16}$"},
+        "overwrite": {"type": "boolean"},
+        "missing_ok": {"type": "boolean"},
+        "delete_after": {"type": "boolean"}
+      },
+      "allOf": [
+        {"if": {"properties": {"type": {"const": "downloadFile"}}},
+         "then": {"required": ["file", "output"]}},
+        {"if": {"properties": {"type": {"const": "extractFile"}}},
+         "then": {"required": ["file", "output"]}},
+        {"if": {"properties": {"type": {"const": "copyFile"}}},
+         "then": {"required": ["source", "destination"]}},
+        {"if": {"properties": {"type": {"const": "deleteFile"}}},
+         "then": {"required": ["file"]}},
+        {"if": {"properties": {"type": {"const": "installCia"}}},
+         "then": {"required": ["file"]}},
+        {"if": {"properties": {"type": {"const": "uninstallCia"}}},
+         "then": {"required": ["title_id"]}}
+      ]
+    }
+  }
+}

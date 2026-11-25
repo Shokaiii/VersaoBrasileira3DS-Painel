@@ -1,0 +1,76 @@
+{
+  "id": "rh-megamix",
+  "name": "Rhythm Heaven Megamix",
+  "platform": "3ds",
+  "title_ids": [
+    {
+      "region": "USA",
+      "id": "000400000018A400"
+    }
+  ],
+  "translations": [
+    {
+      "id": "rh-megamix-ptbr",
+      "name": "Ritmo de Festa: Megamix",
+      "language": "pt-BR",
+      "version": "1.0.1",
+      "release_date": "2024-05-10",
+      "authors": [
+        {
+          "name": "Elite dos Quatro",
+          "role": "Tradução"
+        }
+      ],
+      "description": "",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "USA"
+        ],
+        "game_versions": [
+          "0.0.0"
+        ],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": ""
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/rh-megamix.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/rh-megamix.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/rh-megamix.zip",
+            "output": "sdmc:/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/rh-megamix.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/000400000018A400/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/rhmm/"
+          }
+        ]
+      }
+    }
+  ],
+  "publisher": "Nintendo",
+  "release_year": 2015
+}

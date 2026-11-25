@@ -1,0 +1,71 @@
+{
+  "id": "metroid-sr",
+  "name": "Metroid: Samus Return",
+  "platform": "3ds",
+  "title_ids": [
+    {
+      "region": "EUR",
+      "id": "00040000001BFB00"
+    }
+  ],
+  "translations": [
+    {
+      "id": "metroid-sr-ptbr",
+      "name": "Metroid: Samus Retorna",
+      "language": "pt-BR",
+      "version": "1.2",
+      "release_date": "2026-03-09",
+      "authors": [
+        {
+          "name": "SolidOne",
+          "role": "Tradução"
+        }
+      ],
+      "description": "",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "EUR"
+        ],
+        "game_versions": [],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": ""
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/metroid-sr.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/metroid-sr.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/metroid-sr.zip",
+            "output": "sdmc:/luma/titles/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/metroid-sr.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/00040000001BFB00/"
+          }
+        ]
+      }
+    }
+  ],
+  "release_year": 2017,
+  "publisher": "Nintendo",
+  "description": "Dessa vez, Samus terá que ir ao planeta SR388, aparentemente a terra natal dos Metroids. Seu objetivo: levá-los à extinção, para evitar que caiam em mau uso, como foi o caso em Zebes."
+}

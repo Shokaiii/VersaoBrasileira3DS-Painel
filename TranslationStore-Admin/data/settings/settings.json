@@ -1,0 +1,12 @@
+{
+  "base_url": "https://versaobrasileira3ds.com.br/versaobrasileirahb/",
+  "catalog_url": "",
+  "catalog_version": "1.5.2",
+  "last_generated": "2026-11-20T23:16:20Z",
+  "app_publish": true,
+  "app_required": "sim",
+  "app_notes": [
+    "-Realiza a atualização do próprio APP.",
+    "-Funcionamento do Catálogo atualizado."
+  ]
+}

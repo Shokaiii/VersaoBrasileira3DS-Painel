@@ -1,0 +1,74 @@
+{
+  "id": "fire-emblem-a",
+  "name": "Fire Emblem: Awakening",
+  "platform": "3ds",
+  "title_ids": [
+    {
+      "region": "USA",
+      "id": "00040000000A0500"
+    }
+  ],
+  "translations": [
+    {
+      "id": "fire-emblem-a-ptbr",
+      "name": "Fire Emblem: Awakening",
+      "language": "pt-BR",
+      "version": "1.0",
+      "release_date": "2026-06-29",
+      "authors": [
+        {
+          "name": "Astro",
+          "role": "Tradução"
+        }
+      ],
+      "description": "",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "USA"
+        ],
+        "game_versions": [],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": ""
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/fire-emblem-a.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/fire-emblem-a.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/fire-emblem-a.zip",
+            "output": "sdmc:/luma/titles/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/fire-emblem-a.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/00040000000A0500/"
+          }
+        ]
+      }
+    }
+  ],
+  "publisher": "Nintendo",
+  "release_year": 2012,
+  "genres": [
+    "RPG",
+    "Tático"
+  ]
+}

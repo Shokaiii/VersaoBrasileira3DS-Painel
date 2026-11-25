@@ -1,0 +1,137 @@
+{
+  "id": "boxboy",
+  "name": "BoxBoy!",
+  "platform": "3ds",
+  "title_ids": [
+    {
+      "region": "USA",
+      "id": "0004000000154500"
+    },
+    {
+      "region": "EUR",
+      "id": "0004000000154600"
+    }
+  ],
+  "translations": [
+    {
+      "id": "boxboy-ptbr",
+      "name": "Caixinho - USA",
+      "language": "pt-BR",
+      "version": "1.2",
+      "release_date": "2022-02-21",
+      "authors": [
+        {
+          "name": "Kosmus",
+          "role": "Tradução"
+        }
+      ],
+      "description": "",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "USA"
+        ],
+        "game_versions": [
+          "0.0.0"
+        ],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": "Compatível apenas com a versão americana."
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/caixinho-usa.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/caixinho-usa.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/caixinho-usa.zip",
+            "output": "sdmc:/luma/titles/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/caixinho-usa.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/0004000000154500/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "boxboy-ptbr-2",
+      "name": "Caixinho - EUR",
+      "language": "pt-BR",
+      "version": "1.2",
+      "release_date": "2022-02-21",
+      "authors": [
+        {
+          "name": "Kosmus",
+          "role": "Tradução"
+        }
+      ],
+      "description": "",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "EUR"
+        ],
+        "game_versions": [
+          "0.0.0"
+        ],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": "Compatível apenas com a verão europeia. "
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/caixinho-eur.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/caixinho-eur.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/caixinho-eur.zip",
+            "output": "sdmc:/luma/titles/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/caixinho-eur.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/0004000000154600/"
+          }
+        ]
+      }
+    }
+  ],
+  "publisher": "Nintendo",
+  "genres": [
+    "Puzzle",
+    "Plataforma"
+  ],
+  "release_year": 2015
+}

@@ -1,0 +1,8 @@
+# Ambiente Python e arquivos gerados
+TranslationStore-Admin/.venv/
+__pycache__/
+*.pyc
+TranslationStore-Admin/output/
+
+# Pacotes das traduções: ficam só no computador e no servidor
+TranslationStore-Admin/data/files/

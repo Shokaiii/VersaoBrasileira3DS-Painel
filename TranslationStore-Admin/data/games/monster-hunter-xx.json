@@ -1,0 +1,75 @@
+{
+  "id": "monster-hunter-xx",
+  "name": "Monster Hunter XX",
+  "platform": "3ds",
+  "title_ids": [
+    {
+      "region": "JPN",
+      "id": "0004000000197100"
+    }
+  ],
+  "translations": [
+    {
+      "id": "monster-hunter-xx-ptbr",
+      "name": "Monster Hunter XX",
+      "language": "pt-BR",
+      "version": "1.5.2",
+      "release_date": "2026-10-12",
+      "authors": [
+        {
+          "name": "Dodogama Team",
+          "role": "Tradução"
+        }
+      ],
+      "description": "",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "JPN"
+        ],
+        "game_versions": [
+          "1.4"
+        ],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": "A tradução EXIGE que seu jogo esteja atualizado na versão 1.4.0, caso contrário não irá funcionar."
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/monster-hunter-xx.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/monster-hunter-xx.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/monster-hunter-xx.zip",
+            "output": "sdmc:/luma/titles/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/monster-hunter-xx.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/0004000000197100/"
+          }
+        ]
+      }
+    }
+  ],
+  "publisher": "Capcom",
+  "release_year": 2017,
+  "genres": [
+    "RPG"
+  ]
+}

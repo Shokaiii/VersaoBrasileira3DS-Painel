@@ -1,0 +1,137 @@
+{
+  "id": "smt-iv",
+  "name": "Shin Megami Tensei IV",
+  "platform": "3ds",
+  "title_ids": [
+    {
+      "region": "USA",
+      "id": "00040000000E5C00"
+    },
+    {
+      "region": "USA",
+      "id": "0004000000141C00"
+    }
+  ],
+  "translations": [
+    {
+      "id": "smt-iv-ptbr",
+      "name": "Shin Megami Tensei IV - USA",
+      "language": "pt-BR",
+      "version": "1.0.0",
+      "release_date": "2024-05-03",
+      "authors": [
+        {
+          "name": "Zeros7",
+          "role": "Tradução"
+        }
+      ],
+      "description": "- DLCs sem tradução (por enquanto não é possível reinserir a tradução nos arquivos da DLC, mas ainda é possível jogar o conteúdo em inglês com a tradução aplicada)",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "USA"
+        ],
+        "game_versions": [
+          "1.1"
+        ],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": ""
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/smt-iv.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/smt-iv.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/smt-iv.zip",
+            "output": "sdmc:/luma/titles/00040000000E5C00/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/smt-iv.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/00040000000E5C00/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "smt-iv-ptbr-2",
+      "name": "Shin Megami Tensei IV - EUR",
+      "language": "pt-BR",
+      "version": "1.0.0",
+      "release_date": "2024-05-03",
+      "authors": [
+        {
+          "name": "Zeros7",
+          "role": "Tradução"
+        }
+      ],
+      "description": "- DLCs sem tradução (por enquanto não é possível reinserir a tradução nos arquivos da DLC, mas ainda é possível jogar o conteúdo em inglês com a tradução aplicada)\n- A tradução aplicada na versão Europeia só funcionará parcialmente (É recomendado aplicar a tradução na versão americana do jogo, mas ainda é possível jogá-la na versão europeia com poucos textos em inglês)",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "EUR"
+        ],
+        "game_versions": [
+          "1.0"
+        ],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": ""
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/smt-iv.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/smt-iv.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/smt-iv.zip",
+            "output": "sdmc:/luma/titles/0004000000141C00/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/smt-iv.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/0004000000141C00/"
+          }
+        ]
+      }
+    }
+  ],
+  "description": "No Reino Oriental de Mikado, aqueles que completam 18 anos são submetidos ao Rito da Manopla, e aqueles que passam no Rito se tornam protetores do Reino contra ataques de demônios, os Samurai. Flynn, o protagonista, se torna um Samurai e descobre um mundo completamente diferente daquele que viveu por toda sua vida.",
+  "genres": [
+    "RPG"
+  ],
+  "publisher": "Atlus",
+  "release_year": 2013
+}

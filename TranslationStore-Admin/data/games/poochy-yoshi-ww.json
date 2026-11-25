@@ -1,0 +1,75 @@
+{
+  "id": "poochy-yoshi-ww",
+  "name": "Poochy & Yoshi's Woolly World",
+  "platform": "3ds",
+  "title_ids": [
+    {
+      "region": "EUR",
+      "id": "00040000001A4200"
+    }
+  ],
+  "translations": [
+    {
+      "id": "poochy-yoshi-ww-ptbr",
+      "name": "Poochy & Yoshi's Woolly World",
+      "language": "pt-BR",
+      "version": "1.0.0",
+      "release_date": "2025-04-18",
+      "authors": [
+        {
+          "name": "ACELGAMAN",
+          "role": "Tradução"
+        }
+      ],
+      "description": "",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "EUR"
+        ],
+        "game_versions": [
+          "0.0.0"
+        ],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": "Por limitações técnicas atuais, algumas animações e textos ainda não puderam ser modificados: Campanha cooperativa para dois jogadores, Quiz dos Filmes, Funcionalidades relacionadas a amiibos e Recursos do StreetPass."
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/poochy-yoshi-ww.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/poochy-yoshi-ww.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/poochy-yoshi-ww.zip",
+            "output": "sdmc:/luma/titles/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/poochy-yoshi-ww.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/00040000001A4200/"
+          }
+        ]
+      }
+    }
+  ],
+  "publisher": "Nintendo",
+  "genres": [
+    "Plataforma"
+  ],
+  "release_year": 2017
+}

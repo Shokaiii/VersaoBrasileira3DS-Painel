@@ -1,0 +1,76 @@
+{
+  "id": "pokemon-x",
+  "name": "Pokémon X",
+  "platform": "3ds",
+  "title_ids": [
+    {
+      "region": "USA",
+      "id": "0004000000055D00"
+    }
+  ],
+  "translations": [
+    {
+      "id": "pokemon-x-ptbr",
+      "name": "Pokémon X",
+      "language": "pt-BR",
+      "version": "1.5",
+      "release_date": "2024-05-30",
+      "authors": [
+        {
+          "name": "Elite dos Quatro",
+          "role": "Tradução"
+        }
+      ],
+      "description": "Tradução do jogo Pokémon X para Nintendo 3DS des",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "USA"
+        ],
+        "game_versions": [
+          "1.5"
+        ],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": "O jogo precisa estar com a atualização 1.5 instalada para a tradução funcionar corretamente."
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/pokemon-x.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/pokemon-x.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/pokemon-x.zip",
+            "output": "sdmc:/luma/titles/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/pokemon-x.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/0004000000055D00/"
+          }
+        ]
+      }
+    }
+  ],
+  "publisher": "Nintendo",
+  "release_year": 2013,
+  "genres": [
+    "RPG"
+  ],
+  "description": "Embarque em uma jornada pela região de Kalos, com o objetivo de se tornar um Mestre Pokémon e desvendar os mistérios de uma antiga civilização."
+}

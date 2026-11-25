@@ -1,0 +1,84 @@
+{
+  "id": "zelda-tmc",
+  "name": "The Legend of Zelda: The Minish Cap",
+  "platform": "gba",
+  "title_ids": [
+    {
+      "region": "ALL",
+      "id": "0004000005A6B500"
+    }
+  ],
+  "translations": [
+    {
+      "id": "zelda-tmc-ptbr",
+      "name": "A Lenda de Zelda: O Gorro Minimizador",
+      "language": "pt-BR",
+      "version": "1.0",
+      "release_date": "2022-12-30",
+      "authors": [
+        {
+          "name": "SolidOne",
+          "role": "Tradução"
+        },
+        {
+          "name": "Monkey Traduções",
+          "role": "Tradução"
+        },
+        {
+          "name": "Hyrule Legends",
+          "role": "Tradução"
+        },
+        {
+          "name": "Trans-Center",
+          "role": "Tradução"
+        },
+        {
+          "name": "F.U.R.T",
+          "role": "Tradução"
+        },
+        {
+          "name": "Elite dos Quatro",
+          "role": "Tradução"
+        }
+      ],
+      "description": "",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "ALL"
+        ],
+        "game_versions": [],
+        "consoles": "all",
+        "requirements": [],
+        "notes": ""
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/gba/zelda-tmc.cia",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/zelda-tmc.cia"
+          },
+          {
+            "type": "installCia",
+            "label": "",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/zelda-tmc.cia"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "uninstallCia",
+            "title_id": "0004000005A6B500"
+          }
+        ]
+      }
+    }
+  ],
+  "publisher": "Nintendo",
+  "release_year": 2004,
+  "description": "Ezlo, uma espécie de Picori, acaba sendo vítima de uma maldição de Vaati após o mesmo roubar o Gorro Minimizador de Ezlo, Vaati o transforma em um gorro falante, e liberta o mal selado pela Espada Picori, seu objetivo como Link é libertar o Reino de Hyrule e salvar a princesa Zelda do poder que Vaati roubou ao lado de seu amigo gorro falante."
+}

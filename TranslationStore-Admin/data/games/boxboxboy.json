@@ -1,0 +1,137 @@
+{
+  "id": "boxboxboy",
+  "name": "BoxBoxBoy!",
+  "platform": "3ds",
+  "title_ids": [
+    {
+      "region": "USA",
+      "id": "000400000018EE00"
+    },
+    {
+      "region": "EUR",
+      "id": "000400000018E800"
+    }
+  ],
+  "translations": [
+    {
+      "id": "boxboxboy-ptbr",
+      "name": "Caixinho ao Quadrado - USA",
+      "language": "pt-BR",
+      "version": "1.0",
+      "release_date": "2022-02-22",
+      "authors": [
+        {
+          "name": "Kosmus",
+          "role": "Tradução"
+        }
+      ],
+      "description": "",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "USA"
+        ],
+        "game_versions": [
+          "0.0.0"
+        ],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": "Compatível apenas com a versão americana"
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/caixinho-quadrado-usa.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/caixinho-quadrado-usa.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/caixinho-quadrado-usa.zip",
+            "output": "sdmc:/luma/titles/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/caixinho-quadrado-usa.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/000400000018EE00/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "boxboxboy-ptbr-2",
+      "name": "Caixinho ao Quadrado - EUR",
+      "language": "pt-BR",
+      "version": "1.0",
+      "release_date": "2022-02-22",
+      "authors": [
+        {
+          "name": "Kosmus",
+          "role": "Tradução"
+        }
+      ],
+      "description": "",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "EUR"
+        ],
+        "game_versions": [
+          "0.0.0"
+        ],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": ""
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/caixinho-quadrado-eur.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/caixinho-quadrado-eur.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/caixinho-quadrado-eur.zip",
+            "output": "sdmc:/luma/titles/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/caixinho-quadrado-eur.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/000400000018E800/"
+          }
+        ]
+      }
+    }
+  ],
+  "publisher": "Nintendo",
+  "release_year": 2016,
+  "genres": [
+    "Puzzle",
+    "Plataforma"
+  ]
+}

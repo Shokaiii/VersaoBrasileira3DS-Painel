@@ -1,0 +1,75 @@
+{
+  "id": "zelda-tfh",
+  "name": "The Legend of Zelda: Tri Force Heroes",
+  "platform": "3ds",
+  "title_ids": [
+    {
+      "region": "USA",
+      "id": "0004000000176F00"
+    }
+  ],
+  "translations": [
+    {
+      "id": "zelda-tfh-ptbr",
+      "name": "The Legend of Zelda: Tri Force Heroes",
+      "language": "pt-BR",
+      "version": "3.0",
+      "release_date": "2024-03-03",
+      "authors": [
+        {
+          "name": "Triforce Heroes",
+          "role": "Tradução"
+        }
+      ],
+      "description": "",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "USA"
+        ],
+        "game_versions": [],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": ""
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/zelda-tfh.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/zelda-tfh.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/zelda-tfh.zip",
+            "output": "sdmc:/luma/titles/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/zelda-tfh.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/0004000000176F00/"
+          }
+        ]
+      }
+    }
+  ],
+  "publisher": "Nintendo",
+  "release_year": 2015,
+  "genres": [
+    "Puzzle",
+    "Ação",
+    "Aventura"
+  ]
+}

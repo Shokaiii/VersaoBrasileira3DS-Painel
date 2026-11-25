@@ -1,0 +1,76 @@
+{
+  "id": "ever-oasis",
+  "name": "Ever Oasis",
+  "platform": "3ds",
+  "title_ids": [
+    {
+      "region": "USA",
+      "id": "00040000001A4800"
+    }
+  ],
+  "translations": [
+    {
+      "id": "ever-oasis-ptbr",
+      "name": "Ever Oasis",
+      "language": "pt-BR",
+      "version": "1.0.0",
+      "release_date": "2025-12-14",
+      "authors": [
+        {
+          "name": "Tri Force Heroes",
+          "role": "Tradução"
+        }
+      ],
+      "description": "",
+      "changelog": [],
+      "compatibility": {
+        "regions": [
+          "USA"
+        ],
+        "game_versions": [],
+        "consoles": "all",
+        "requirements": [
+          "luma3ds",
+          "layeredfs"
+        ],
+        "notes": ""
+      },
+      "download_size": null,
+      "install_size": null,
+      "install": {
+        "steps": [
+          {
+            "type": "downloadFile",
+            "file": "https://versaobrasileira3ds.com.br/versaobrasileirahb/files/3ds/ever-oasis.zip",
+            "output": "sdmc:/3ds/VersaoBrasileira/tmp/ever-oasis.zip"
+          },
+          {
+            "type": "extractFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/ever-oasis.zip",
+            "output": "sdmc:/luma/titles/"
+          },
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/3ds/VersaoBrasileira/tmp/ever-oasis.zip"
+          }
+        ]
+      },
+      "uninstall": {
+        "steps": [
+          {
+            "type": "deleteFile",
+            "file": "sdmc:/luma/titles/00040000001A4800/"
+          }
+        ]
+      }
+    }
+  ],
+  "publisher": "Nintendo",
+  "release_year": 2017,
+  "genres": [
+    "RPG",
+    "Ação",
+    "Aventura"
+  ],
+  "description": "Acompanha uma Seedling nascida da Grande Árvore, que trabalha com o espírito da água, Esna, para construir o último oásis em um vasto deserto e ajudar os novos moradores ao longo do caminho."
+}
