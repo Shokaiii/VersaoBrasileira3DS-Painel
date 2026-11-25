@@ -16,7 +16,7 @@ instalação).
 
 1. **Jogos → + Novo jogo**: nome, identificador e plataforma.
 2. No jogo: dados, Title IDs, ícone e capa (qualquer imagem; o painel recorta e reduz
-   para 48×48 e 112×128).
+   para 48×48 e 192×128).
 3. **+ Nova tradução**: dados, equipe, compatibilidade, **Enviar arquivos…** (o pacote
    da tradução) e as **etapas de instalação** (há modelos prontos: LayeredFS e CIA).
 4. **Salvar** (ou Ctrl+S).

@@ -134,7 +134,7 @@ export async function gameEditor(main, gameId) {
           }, "Remover"),
           picker));
     };
-    imageArea.replaceChildren(box("icon", "Ícone", 48, 48), box("cover", "Capa", 112, 128));
+    imageArea.replaceChildren(box("icon", "Ícone", 48, 48), box("cover", "Capa", 192, 128));
   }
   renderImages();
   const imageCard = h("section.card", {}, h("div.card-head", {}, h("h2", {}, "Imagens")), imageArea,

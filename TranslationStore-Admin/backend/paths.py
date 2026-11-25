@@ -21,4 +21,4 @@ for folder in (GAMES, SETTINGS, IMAGES, FILES, OUTPUT):
 
 # Tamanhos das imagens no aplicativo (Especificação 02, §5).
 ICON_SIZE = (48, 48)
-COVER_SIZE = (112, 128)
+COVER_SIZE = (192, 128)  # 3:2

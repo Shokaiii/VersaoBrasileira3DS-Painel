@@ -1,9 +1,9 @@
-// Recorte de imagem na proporção do aplicativo (ícone 1:1, capa 112:128),
+// Recorte de imagem na proporção do aplicativo (ícone 1:1, capa 3:2),
 // com prévia no tamanho real. Resolve com {file, crop, mode} ou null.
 import { h } from "./util.js";
 
 export function cropImage(file, kind) {
-  const [W, H] = kind === "icon" ? [48, 48] : [112, 128];
+  const [W, H] = kind === "icon" ? [48, 48] : [192, 128];
   const ratio = W / H;
   return new Promise((resolve) => {
     const url = URL.createObjectURL(file);
@@ -82,7 +82,7 @@ export function cropImage(file, kind) {
     const cancel = h("button", { onclick: () => close(null) }, "Cancelar");
     const back = h("div.modal-back", {},
       h("div.modal", {},
-        h("h2", {}, kind === "icon" ? "Ícone (48×48)" : "Capa (112×128)"),
+        h("h2", {}, kind === "icon" ? "Ícone (48×48)" : "Capa (192×128)"),
         h("div.crop-layout", {},
           area,
           h("div.crop-side", {},

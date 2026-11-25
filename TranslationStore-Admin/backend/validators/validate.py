@@ -7,6 +7,7 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator
 
+from .. import paths
 from ..models import media
 
 SCHEMA = json.loads((Path(__file__).parent / "schemas" / "game.schema.json").read_text(encoding="utf-8"))
@@ -149,6 +150,11 @@ def validate_game(game: dict, problems: list, translation_ids: dict | None = Non
         problems.append({"level": "warning", "where": name, "message": "sem ícone"})
     if not images.get("cover"):
         problems.append({"level": "warning", "where": name, "message": "sem capa"})
+    elif media.image_size(images["cover"]) != paths.COVER_SIZE:
+        width, height = media.image_size(images["cover"])
+        problems.append({"level": "error", "where": name,
+                         "message": f"capa no tamanho antigo ({width}×{height}): envie a capa "
+                                    f"de novo no formato 3:2 ({paths.COVER_SIZE[0]}×{paths.COVER_SIZE[1]})"})
     if not game.get("translations"):
         problems.append({"level": "warning", "where": name, "message": "nenhuma tradução cadastrada"})
 

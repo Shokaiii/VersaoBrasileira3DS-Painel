@@ -26,6 +26,12 @@ def image_files(game_id: str) -> dict:
             "cover": cover if cover.exists() else None}
 
 
+def image_size(path: Path) -> tuple:
+    """(largura, altura) de uma imagem já processada."""
+    with Image.open(path) as image:
+        return image.size
+
+
 def process_image(data: bytes, kind: str, mode: str = "fill",
                   crop: dict | None = None) -> Image.Image:
     """Ajusta a imagem ao tamanho do aplicativo.
