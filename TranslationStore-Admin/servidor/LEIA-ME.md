@@ -27,7 +27,8 @@ Requisitos: PHP 8.1 ou mais novo, MySQL/MariaDB, conta de e-mail do domínio (Ti
    - `ip_salt`: outro texto longo e aleatório;
    - `smtp_pass`: a senha da conta `contato@` no Titan (o envio dos e-mails do Contato é feito por SMTP, em `smtp.titan.email`, porta 465).
 4. Abra `https://versaobrasileira3ds.com.br/versaobrasileirahb/api/instalar.php`. Deve aparecer `"ok":true`. **Apague o `instalar.php`** do servidor.
-5. Confira:
+5. No **Titan**, nas configurações da conta `contato@`, ative o **acesso por apps de terceiros (IMAP/SMTP)**. Sem isso, o envio dos e-mails do Contato falha com "535 authentication failed" (a mensagem ainda fica gravada e aparece no painel).
+6. Confira:
    - `.../api/baixados.php` mostra `{"ok":true, ..., "items":[]}`;
    - `.../api/config.php` mostra erro de acesso (403).
 
