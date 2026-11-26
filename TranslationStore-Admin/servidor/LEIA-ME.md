@@ -15,7 +15,7 @@ versaobrasileirahb/
     └── mensagens.php      mensagens para o painel (com a chave do painel)
 ```
 
-Requisitos: PHP 8.1 ou mais novo, MySQL/MariaDB, conta de e-mail do domínio.
+Requisitos: PHP 8.1 ou mais novo, MySQL/MariaDB, conta de e-mail do domínio (Titan, enviada por SMTP autenticado).
 
 ## Instalar (cPanel)
 
@@ -24,7 +24,8 @@ Requisitos: PHP 8.1 ou mais novo, MySQL/MariaDB, conta de e-mail do domínio.
 3. Copie `config.exemplo.php` para `config.php` e edite o `config.php`:
    - `db_pass`: a senha do usuário do banco;
    - `panel_key`: um texto longo e aleatório (32 caracteres ou mais) — guarde, vai no painel;
-   - `ip_salt`: outro texto longo e aleatório.
+   - `ip_salt`: outro texto longo e aleatório;
+   - `smtp_pass`: a senha da conta `contato@` no Titan (o envio dos e-mails do Contato é feito por SMTP, em `smtp.titan.email`, porta 465).
 4. Abra `https://versaobrasileira3ds.com.br/versaobrasileirahb/api/instalar.php`. Deve aparecer `"ok":true`. **Apague o `instalar.php`** do servidor.
 5. Confira:
    - `.../api/baixados.php` mostra `{"ok":true, ..., "items":[]}`;

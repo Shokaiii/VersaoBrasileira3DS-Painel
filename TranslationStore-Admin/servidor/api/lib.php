@@ -111,6 +111,134 @@ function catalogTranslations(): array
     return $map;
 }
 
+// --- E-mail --------------------------------------------------------------------
+
+// Envia um e-mail de texto. Usa SMTP autenticado quando smtp_pass está
+// preenchido; senão, o mail() do PHP. Retorna false e registra o motivo no
+// log de erros do PHP em caso de falha.
+function sendMail(string $subject, string $body, string $replyTo = ''): bool
+{
+    $c = config();
+    $pass = (string) ($c['smtp_pass'] ?? '');
+    if ($pass === '' || str_starts_with($pass, 'TROQUE')) {
+        return sendWithMail($subject, $body, $replyTo);
+    }
+    try {
+        smtpSend($subject, $body, $replyTo);
+        return true;
+    } catch (RuntimeException $e) {
+        error_log('vb-api smtp: ' . $e->getMessage());
+        return false;
+    }
+}
+
+function encodedSubject(string $subject): string
+{
+    return '=?UTF-8?B?' . base64_encode($subject) . '?=';
+}
+
+function sendWithMail(string $subject, string $body, string $replyTo): bool
+{
+    $c = config();
+    $headers = [
+        'From: ' . encodedSubject('Versão Brasileira') . ' <' . $c['mail_from'] . '>',
+        'MIME-Version: 1.0',
+        'Content-Type: text/plain; charset=UTF-8',
+        'Content-Transfer-Encoding: 8bit',
+    ];
+    if ($replyTo !== '') {
+        $headers[] = 'Reply-To: ' . $replyTo;
+    }
+    return @mail($c['mail_to'], encodedSubject($subject), $body,
+                 implode("\r\n", $headers), '-f' . $c['mail_from']);
+}
+
+function smtpSend(string $subject, string $body, string $replyTo): void
+{
+    $c = config();
+    $host = (string) $c['smtp_host'];
+    $port = (int) ($c['smtp_port'] ?? 465);
+    $secure = (string) ($c['smtp_secure'] ?? 'ssl');
+    $from = (string) $c['mail_from'];
+    $to = (string) $c['mail_to'];
+
+    $context = stream_context_create(['ssl' => [
+        'verify_peer' => true,
+        'verify_peer_name' => true,
+        'peer_name' => $host,
+    ]]);
+    $address = ($secure === 'ssl' ? 'ssl://' : 'tcp://') . $host . ':' . $port;
+    $socket = @stream_socket_client($address, $errno, $errstr, 15,
+                                    STREAM_CLIENT_CONNECT, $context);
+    if ($socket === false) {
+        throw new RuntimeException("conexão com $address falhou: $errstr ($errno)");
+    }
+    stream_set_timeout($socket, 15);
+
+    // Lê a resposta (várias linhas "250-...") e confere o código.
+    $expect = function (int ...$codes) use ($socket): string {
+        $text = '';
+        while (($line = fgets($socket, 1024)) !== false) {
+            $text .= $line;
+            if (strlen($line) < 4 || $line[3] !== '-') {
+                break;
+            }
+        }
+        $code = (int) substr($text, 0, 3);
+        if (!in_array($code, $codes, true)) {
+            throw new RuntimeException('resposta inesperada: ' . trim($text));
+        }
+        return $text;
+    };
+    $command = function (string $line, int ...$codes) use ($socket, $expect): string {
+        fwrite($socket, $line . "\r\n");
+        return $expect(...$codes);
+    };
+
+    try {
+        $expect(220);
+        $helo = gethostname() ?: 'localhost';
+        $command("EHLO $helo", 250);
+        if ($secure === 'tls') {
+            $command('STARTTLS', 220);
+            if (!stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+                throw new RuntimeException('STARTTLS falhou');
+            }
+            $command("EHLO $helo", 250);
+        }
+        $command('AUTH LOGIN', 334);
+        $command(base64_encode((string) $c['smtp_user']), 334);
+        $command(base64_encode((string) $c['smtp_pass']), 235);
+        $command("MAIL FROM:<$from>", 250);
+        $command("RCPT TO:<$to>", 250, 251);
+        $command('DATA', 354);
+
+        $domain = substr(strrchr($from, '@') ?: '@localhost', 1);
+        $headers = [
+            'Date: ' . date(DATE_RFC2822),
+            'From: ' . encodedSubject('Versão Brasileira') . ' <' . $from . '>',
+            'To: <' . $to . '>',
+            'Subject: ' . encodedSubject($subject),
+            'Message-ID: <' . bin2hex(random_bytes(12)) . '@' . $domain . '>',
+            'MIME-Version: 1.0',
+            'Content-Type: text/plain; charset=UTF-8',
+            'Content-Transfer-Encoding: 8bit',
+        ];
+        if ($replyTo !== '') {
+            $headers[] = 'Reply-To: <' . $replyTo . '>';
+        }
+        // Linhas que começam com ponto ganham outro ponto (regra do SMTP).
+        $lines = preg_split('/\r\n|\r|\n/', $body) ?: [];
+        $text = implode("\r\n", array_map(
+            fn ($line) => str_starts_with($line, '.') ? '.' . $line : $line, $lines));
+        fwrite($socket, implode("\r\n", $headers) . "\r\n\r\n" . $text . "\r\n.\r\n");
+        $expect(250);
+        $command('QUIT', 221);
+    } finally {
+        fclose($socket);
+    }
+}
+
 function requireMethod(string ...$methods): string
 {
     $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';

@@ -75,22 +75,8 @@ $lines = [
     '',
     $body,
 ];
-$headers = [
-    'From: Versão Brasileira <' . $c['mail_from'] . '>',
-    'MIME-Version: 1.0',
-    'Content-Type: text/plain; charset=UTF-8',
-    'Content-Transfer-Encoding: 8bit',
-];
-if (filter_var($contact, FILTER_VALIDATE_EMAIL)) {
-    $headers[] = 'Reply-To: ' . $contact;
-}
-$sent = @mail(
-    $c['mail_to'],
-    '=?UTF-8?B?' . base64_encode($subject) . '?=',
-    implode("\r\n", $lines),
-    implode("\r\n", $headers),
-    '-f' . $c['mail_from']
-);
+$sent = sendMail($subject, implode("\n", $lines),
+                 filter_var($contact, FILTER_VALIDATE_EMAIL) ? $contact : '');
 if ($sent) {
     $pdo->prepare('UPDATE messages SET emailed = 1 WHERE id = ?')->execute([$id]);
 }

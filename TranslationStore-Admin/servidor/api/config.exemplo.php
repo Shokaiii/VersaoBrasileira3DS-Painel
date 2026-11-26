@@ -16,6 +16,14 @@ return [
     'mail_from' => 'contato@versaobrasileira3ds.com.br',
     'mail_to'   => 'contato@versaobrasileira3ds.com.br',
 
+    // Envio por SMTP autenticado (Titan). Com smtp_pass vazio, o envio usa o
+    // mail() do PHP, que não chega ao Titan.
+    'smtp_host'   => 'smtp.titan.email',
+    'smtp_port'   => 465,
+    'smtp_secure' => 'ssl', // 'ssl' (porta 465), 'tls' (587, STARTTLS) ou 'none'
+    'smtp_user'   => 'contato@versaobrasileira3ds.com.br',
+    'smtp_pass'   => 'TROQUE pela senha do e-mail contato@ no Titan',
+
     // Chave que o painel usa para ler as mensagens (mensagens.php). Use um
     // texto longo e aleatório (pelo menos 32 caracteres) e guarde: ela vai
     // também nas Configurações do painel.
