@@ -6,3 +6,6 @@ TranslationStore-Admin/output/
 
 # Pacotes das traduções: ficam só no computador e no servidor
 TranslationStore-Admin/data/files/
+
+# Configuração da API com senhas: fica só no servidor
+TranslationStore-Admin/servidor/api/config.php
