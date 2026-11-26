@@ -19,6 +19,7 @@ def get_settings():
     settings = store.get_settings()
     settings["catalog_url_effective"] = store.catalog_url(settings)
     settings["output"] = str(paths.OUTPUT)
+    settings["has_panel_key"] = bool(store.get_secret("panel_key"))
     return settings
 
 
@@ -31,6 +32,12 @@ def put_settings(values: dict):
         raise HTTPException(400, "Atualização obrigatória deve ser sim ou nao.")
     if "app_notes" in values and not isinstance(values["app_notes"], list):
         raise HTTPException(400, "As novidades devem ser uma lista.")
+    key = values.pop("panel_key", None)
+    if key is not None:
+        key = str(key).strip()
+        if key and len(key) < 32:
+            raise HTTPException(400, "A chave do painel deve ter pelo menos 32 caracteres.")
+        store.set_secret("panel_key", key)
     return store.save_settings(values)
 
 

@@ -160,3 +160,5 @@ table.files code { font-size: 11px; color: var(--ink-soft); }
 .crop-side { display: flex; flex-direction: column; gap: 10px; min-width: 180px; }
 .crop-side canvas { border: 1px solid var(--line); image-rendering: pixelated; }
 pre.json { background: #0f1f17; color: #d6f5e3; padding: 14px; border-radius: 8px; max-height: 480px; overflow: auto; font-size: 12px; }
+
+.card.unread { border-left: 4px solid var(--accent, #178A4A); }

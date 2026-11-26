@@ -1,4 +1,4 @@
-// Navegação e páginas: Jogos, Gerar catálogo, Configurações, Importar.
+// Navegação e páginas: Jogos, Gerar catálogo, Mensagens, Configurações, Importar.
 import { api, h, toast, field, slugify, SLUG } from "./util.js";
 import { gameEditor, hasUnsaved, clearUnsaved } from "./editor.js";
 
@@ -167,6 +167,8 @@ async function settingsPage() {
     h("option", { value: "sim" }, "Sim — o app só abre depois de atualizar"));
   required.value = s.app_required === "sim" ? "sim" : "nao";
   const notes = h("textarea", { rows: 4, placeholder: "Uma novidade por linha" }, (s.app_notes || []).join("\n"));
+  const panelKey = h("input", { type: "password", autocomplete: "off",
+    placeholder: s.has_panel_key ? "Chave salva — preencha só para trocar" : "A mesma panel_key do config.php" });
   const fileLine = (kind) => {
     const f = app.files[kind];
     if (!f) return h("li", {}, `VersaoBrasileira.${kind}: não encontrado`);
@@ -179,7 +181,9 @@ async function settingsPage() {
         base_url: base.value.trim(), catalog_url: catalogUrl.value.trim(), catalog_version: version.value.trim(),
         app_publish: publish.checked, app_required: required.value,
         app_notes: notes.value.split("\n").map((n) => n.trim()).filter(Boolean),
+        ...(panelKey.value.trim() ? { panel_key: panelKey.value.trim() } : {}),
       });
+      panelKey.value = "";
       toast("Configurações salvas.");
       refreshBadge();
     } catch (error) { toast(error.message, true); }
@@ -206,10 +210,61 @@ async function settingsPage() {
       h("div.toolbar", { style: "margin-top:14px" },
         h("button.primary", { onclick: save }, "Salvar"))),
     h("section.card", {},
+      h("h2", {}, "Servidor (Mensagens)"),
+      h("div.grid", {}, field("Chave do painel", panelKey)),
+      h("p.muted.small", {}, s.has_panel_key
+        ? "Chave salva. Ela fica só neste computador (data/settings/segredos.json) e não vai para o GitHub."
+        : "Cole aqui a panel_key do config.php do servidor para ler as mensagens do Contato."),
+      h("div.toolbar", { style: "margin-top:14px" },
+        h("button.primary", { onclick: save }, "Salvar"))),
+    h("section.card", {},
       h("h2", {}, "No 3DS"),
       h("p", {}, "O aplicativo procura o version.json em:"),
       h("pre.json", {}, (s.base_url || "") + "version.json"),
       h("p.muted.small", {}, "Esse é o endereço em Ajustes → Servidor do Catálogo no 3DS.")));
+}
+
+// --- Mensagens -----------------------------------------------------------------
+
+async function messagesPage() {
+  main.replaceChildren(h("div.page-head", {}, h("h1", {}, "Mensagens")), h("p.muted", {}, "Carregando..."));
+  let data;
+  try {
+    data = await api("GET", "/api/messages");
+  } catch (error) {
+    main.replaceChildren(
+      h("div.page-head", {}, h("h1", {}, "Mensagens")),
+      h("div.empty", {}, error.message));
+    return;
+  }
+  const card = (m) => {
+    const when = new Date(m.created_at.replace(" ", "T") + "Z").toLocaleString("pt-BR");
+    const actions = h("div.toolbar", {},
+      m.read_at ? "" : h("button", {
+        onclick: async () => { try { await api("POST", `/api/messages/${m.id}/read`); messagesPage(); } catch (e) { toast(e.message, true); } },
+      }, "Marcar como lida"),
+      h("button.danger", {
+        onclick: async () => {
+          if (!confirm("Apagar esta mensagem?")) return;
+          try { await api("DELETE", `/api/messages/${m.id}`); messagesPage(); } catch (e) { toast(e.message, true); }
+        },
+      }, "Apagar"));
+    return h("section.card" + (m.read_at ? "" : ".unread"), {},
+      h("div.page-head", {},
+        h("h2", {}, (m.read_at ? "" : "● ") + m.kind_label + (m.game_name ? " — " + m.game_name : "")),
+        h("span.muted.small", {}, `nº ${m.id} · ${when}`)),
+      h("p", { style: "white-space:pre-wrap" }, m.body),
+      h("p.muted.small", {},
+        `Contato: ${m.contact || "—"} · App ${m.app_version || "?"}` +
+        (m.translation_id ? ` · Tradução: ${m.translation_id}` : "") +
+        (m.emailed ? " · enviada por e-mail" : "")),
+      actions);
+  };
+  main.replaceChildren(
+    h("div.page-head", {},
+      h("h1", {}, `Mensagens (${data.unread} não lidas)`),
+      h("button", { onclick: () => messagesPage() }, "Atualizar")),
+    ...(data.items.length ? data.items.map(card) : [h("div.empty", {}, "Nenhuma mensagem.")]));
 }
 
 // --- Importar ------------------------------------------------------------------
@@ -268,6 +323,7 @@ async function route() {
   try {
     if (page === "jogo" && arg) await gameEditor(main, decodeURIComponent(arg));
     else if (page === "gerar") await generatePage();
+    else if (page === "mensagens") await messagesPage();
     else if (page === "configuracoes") await settingsPage();
     else if (page === "importar") importPage();
     else await gamesPage();

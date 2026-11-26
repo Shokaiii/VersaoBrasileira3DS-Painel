@@ -13,12 +13,13 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from . import paths
-from .routes import catalog, files, games
+from .routes import catalog, files, games, messages
 
 app = FastAPI(title="Versão Brasileira — Painel", docs_url="/api/docs")
 app.include_router(games.router)
 app.include_router(files.router)
 app.include_router(catalog.router)
+app.include_router(messages.router)
 app.mount("/media/images", StaticFiles(directory=paths.IMAGES), name="images")
 app.mount("/static", StaticFiles(directory=paths.FRONTEND), name="static")
 

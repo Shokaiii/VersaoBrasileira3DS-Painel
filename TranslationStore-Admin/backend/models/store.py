@@ -59,6 +59,18 @@ def save_settings(values: dict) -> dict:
     return settings
 
 
+# Segredos (chave do painel na API): ficam em data/settings/segredos.json,
+# fora do Git, nunca no settings.json.
+def get_secret(name: str) -> str:
+    return (read_json(paths.SETTINGS / "segredos.json", {}) or {}).get(name, "")
+
+
+def set_secret(name: str, value: str) -> None:
+    secrets = read_json(paths.SETTINGS / "segredos.json", {}) or {}
+    secrets[name] = value
+    write_json(paths.SETTINGS / "segredos.json", secrets)
+
+
 def catalog_url(settings: dict) -> str:
     return settings.get("catalog_url") or settings["base_url"] + "catalog.json"
 
